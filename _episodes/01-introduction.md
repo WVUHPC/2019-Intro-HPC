@@ -1,15 +1,15 @@
 ---
-title: "Introduction"
-teaching: 0
-exercises: 0
+title: "Introduction to HPC"
+start: 540
+teaching: 30
+exercises: 30
 questions:
-- "Key question (FIXME)"
+- "What is High-Performance Computing"
 objectives:
-- "First learning objective. (FIXME)"
+- "Learn the basic terminology in HPC"
 keypoints:
-- "First key point. Brief Answer to questions. (FIXME)"
+- "Learn the basic terminology in HPC"
 ---
 FIXME
 
 {% include links.md %}
-
