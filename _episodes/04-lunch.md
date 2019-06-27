@@ -4,8 +4,6 @@ title: "Lunch Break"
 break: 60
 ---
 
-Use the `break` layout for placeholder episodes representing coffee breaks and lunches.
-These episodes do *not* have exercises, questions, objectives, or keypoints in their metadata,
-but *must* have a "break" field to show how long the break is (in minutes).
+Time for **lunch**. There is one cafeteria on the first floor. And there a few businesses on the riverside trail in woalking distance from the Waterfront building.
 
 {% include links.md %}
