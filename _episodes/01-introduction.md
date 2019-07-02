@@ -78,7 +78,7 @@ In Linux gathering the data from a GUI depends a lot from more from the exact di
   <img src="{{ page.root }}/fig/HardInfo.png" alt="HardInfo" />
 </a>
 
-It is probably easier from the command line CLI but this is too early stage for that. In case you know how to get access to a terminal here are a few commands to try:
+It is probably easier from the command line CLI but this is too early of a stage for that. In case you know how to get access to a terminal here are a few commands to try:
 
 ~~~
 bash-4.2# cat /proc/cpuinfo
@@ -130,11 +130,11 @@ Swap:             0           0           0
 
 There are only two manufacturers that matter for PC consumer computing: Intel and AMD. There are several others manufacturers of CPUs but those are mostly for vertical markets like CPUs for SmartPhones, Photo Cameras, Musical Instruments, or very specialized HPC clusters. It is very unlikely that your computer have a CPU different from Intel or AMD.
 
-More than a decade ago, the main featured used for marketing purpuses on a CPU was the speed. That have changed now, as CPUs are not getting faste but includes complexity that is hard to market with a single number. That is why CPUs are now market with "Product Lines" and the Models are less representative of the actual characteristics of a given machine.
+More than a decade ago, the main featured used for marketing purpuses on a CPU was the speed. That have changed now, as CPUs are not getting faster, but include complexity that is hard to market with a single number. That is why CPUs are now marketed with "Product Lines" and the Models are less representative of the actual characteristics of a given machine.
 
 For example, Intel Core i3 processors are marketed to entry level machines more tailored to basic computing tasks like word processing and web browsing. On the other hand, Intel’s Core i7 and i9 processor range are for high-end products aimed at the top of the line gaming rigs able to run the most recent titles at ridiculously high FPS and resolutions. Machines for enterprise usage are usually under the Xeon Line.
 
-On AMD’s side, you have the Athlon line aimed at entry-level users, all the way to the Ryzen 7 designed mostly for enthusiasts and gamers. AMD has also prduct lines for enterprises like EPYC Server Processors.
+On AMD’s side, you have the Athlon line aimed at entry-level users, all the way to the Ryzen 7 designed mostly for enthusiasts and gamers. AMD also has prduct lines for enterprises like EPYC Server Processors.
 
 ### Cores
 
@@ -142,7 +142,7 @@ The next term to understand is core.
 
 Consumer level CPUs up to 2000s only had one core, but Intel and AMD both hit a brick wall with incremental clock speeds improvements. The heat and power comsumption scales non linearly with the CPU speed. That brings us to the current trend and instead of a single core, CPUs now have two, three, four, eight or sixteen cores on a single CPU.
 
-Each core is actually a full featured CPU, but the due to marketing purposes, the term core is now applied and the term CPU is the name for the full piece of Integrated Circuits that contains several cores.
+Each core is actually a full featured CPU, but due to marketing purposes, the term core is now applied and the term CPU is the name for the full piece of Integrated Circuits that contains several cores.
 
 ### Hyperthreading
 
@@ -150,15 +150,15 @@ Hyperthreading is intrinsically linked to cores and is best understood as a prop
 
 In practical terms, a CPU with four physical cores would be recognized by the operating system as having eight virtual cores, or eight threads. The idea is that by doing that it is expected that the CPU is able to better manage the extra load, by faking the OS about the actual number of physical cores.
 
-In the context of HPC there is still under debate if activating Hyperthreading is beneficial for intensive numerical operations and the answer is very depended from the code. In our clusters Hyperthreading is disabled on all compute nodes and enable on service nodes.
+In the context of HPC there is still debate if activating Hyperthreading is beneficial for intensive numerical operations and the answer is very dependent on the code. In our clusters Hyperthreading is disabled on all compute nodes and enable on service nodes.
 
 ### CPU Frequency
 
-Back in the 80s and 90s CPU was the most important feature of a CPU or at least that way was marketed.
+Back in the 80s and 90s CPU frequency was the most important feature of a CPU or at least that was the way it was marketed.
 
 Other names for CPU frequency are "clock rate", or "clock speed". CPUs work by steps instead of continuous flow of information. The speed of the CPU is today measured in GHz, or how quickly the processor can process instructions in any given second (clock cycles per second). 1 Hz equals one cycle per second, so a 2 GHz frequency can handle 2 billion instructions for every second.
 
-The higher the frequency more operations can be done. However, today that is not the whole story, modern CPUs have complex CPU extensions that allow the CPU to execute several numerical operations on a single clock step. You will here about those as SSE, AVX, AVX2 and AVX512.
+The higher the frequency the more operations can be done. However, today that is not the whole story. Modern CPUs have complex CPU extensions that allow the CPU to execute several numerical operations on a single clock step. You will here about those as SSE, AVX, AVX2 and AVX512.
 
 From another side, CPUs are now able to change the speed up to certain limits, raising and lowering the value if needed. Sometimes raising the CPU frequency of a multicore CPU means that some cores are disabled as result.
 
@@ -166,7 +166,7 @@ Another technique used often by gamers is overclocking. Overclocking, is when th
 
 ### Cache
 
-Cache is a high-speed momentary memory format assigned to the CPU to facilitate future retrieval of data and instructions before processing. It’s very similar to RAM in the sense that it acts as a temporary holding pen for data. However the CPU access this memory in chunks and the mapping to RAM is different.  
+Cache is a high-speed momentary memory format assigned to the CPU to facilitate future retrieval of data and instructions before processing. It’s very similar to RAM in the sense that it acts as a temporary holding pen for data. However CPU's access this memory in chunks and the mapping to RAM is different.  
 
 Contrary to RAM that are independent pieces of hardware, cache sits on the CPU itself, so the access times are significantly faster. The Cache is an important portion of the production cost of a CPU, to the point where one of the differences between  Core i3 i5 and i7 is basically the size of the Cache memory.
 
@@ -181,7 +181,7 @@ From the HPC perspective for intensive numerical operations. The cache size is a
 
 ## Exercise 2
 
-On the central differences between one computer and another are the CPU, the chip or set of chips that control most of the numerical operations, GPUs are also another way of cruch numbers on a computer but we will keep them for the next exercise.
+One of the central differences between one computer and another are the CPU, the chip or set of chips that control most of the numerical operations, GPUs are also another way of cruch numbers on a computer but we will keep them for the next exercise.
 
 ### Intel
 
@@ -193,7 +193,7 @@ If your machine uses AMD processors go to <https://www.amd.com/en/products/speci
 
 ## Connecting to the cluster
 
-Now is time to get into the cluster
+Now it is time to get into the cluster.
 
 On MacOS and Unix/Linux, open a terminal shell and type:
 
