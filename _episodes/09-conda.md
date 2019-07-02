@@ -1,6 +1,6 @@
 ---
 title: "Package and Environemnt Management (Conda)"
-teaching: 30
+teaching: 60
 exercises: 30
 questions:
 - "How to create my own Environemnt and install packages with Conda"

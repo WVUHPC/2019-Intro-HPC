@@ -1,6 +1,7 @@
 ---
 title: "Software Containers (Singularity)"
-teaching: 30
+start: 540
+teaching: 60
 exercises: 30
 questions:
 - "How to send files in and out the cluster"
