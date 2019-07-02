@@ -10,6 +10,22 @@ objectives:
 keypoints:
 - "Transfer files using rsync and Globus Online"
 ---
-FIXME
+
+## With a Web Interface (Globus)
+
+### Create end point
+
+### Transfer files
+
+### Exercise 1
+
+## With the Command Line (rsync)
+
+### rsync vs scp
+
+### Exercise 2
+
+## Google Drive
+
 
 {% include links.md %}
