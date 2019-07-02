@@ -1,7 +1,7 @@
 ---
 layout: break
 title: "Lunch Break"
-break: 120
+break: 60
 ---
 
 Use the `break` layout for placeholder episodes representing coffee breaks and lunches.
