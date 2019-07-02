@@ -12,10 +12,10 @@ keypoints:
 
 ### Command Line Interface
 
-At a high level, a HPC cluster is a big computer to be used by several users at the same time. The users expect to run a variety of scientific codes, store the data needed as input or generated as output. In HPC computers usually communicate with each other for task that are too big for a single computer to deal and interact with us allowing us to take decisions and see errors.
+At a high level, a HPC cluster is a big computer to be used by several users at the same time. The users expect to run a variety of scientific codes, store the data needed as input or generated as output. In HPC, computers usually communicate with each other for tasks that are too big for a single computer to deal and interact with us allowing us to make decisions and see errors.
 
 Our interaction with computers happens in many different ways,
-including through a keyboard and mouse, touch screen interfaces, or using speech recognition systems. However in HPC we need an efficient and still very light way of communicate with the head node. The front end machine in a HPC cluster. In contrast Desktop computers uses Graphical User Interface.
+including through a keyboard and mouse, touch screen interfaces, or using speech recognition systems. However in HPC we need an efficient and still very light way of communicating with the head node. The front end machine in a HPC cluster. In contrast Desktop computers uses a Graphical User Interface.
 
 
 The **graphical user interface** (GUI) is the most widely used way to interact with personal computers. We give instructions (to run a program, to copy a file, to create a new folder/directory) with the convenience of a few mouse clicks. This way of interacting with a computer is intuitive and very easy to learn. But this way of giving instructions to a computer scales very poorly if we are to give a large stream of instructions even if they are similar or identical. For example if we have to copy the third line of each of a thousand text files stored in thousand different directories and paste it into a single file line by line. Using the traditional GUI approach of clicks will take several hours to do this.
@@ -85,7 +85,7 @@ drwx------   2 training001 training   512 Jun 27 13:24 .ssh
 > Usually this means that you have mis-typed the command.
 {: .callout}
 
-### Why using the CLI?
+### Why use the CLI?
 
 The Command Line Interface was one of the first ways of interacting with computers. Previously the interaction happened with perforated cards or even switching cables on a big console. Still the CLI is a powerful way of talking with computers.
 
@@ -110,7 +110,7 @@ to tackle a wide range of scientific questions and computational challenges.
 
 Commands in Unix/Linux are very stable with some commands being around for decades now. So what your learn will be of good use in the future. This exercises pretend to give you a feeling of the different parts of a command.
 
-Execute the command `cal`, we execute that in our previous episode. Execute it again like this `cal -y`. You should get an output like this:
+Execute the command `cal`, we executed that in our previous episode. Execute it again like this `cal -y`. You should get an output like this:
 
 ~~~
 [training001@srih0001 ~]$ cal -y
@@ -153,7 +153,7 @@ Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa
 ~~~
 {: .output}
 
-The command line is powerful enough to allow you to do even programming.
+The command line is powerful enough to allow you to even do programming.
 Execute this command and see the answer
 
 ~~~
@@ -178,7 +178,7 @@ Execute this command and see the answer
 ~~~
 {: .output}
 
-If you are not getting this output check very carefully the command line. Even small changes could be interpreted by the shell as entirely different commands so you need to be extra careful and gather insight when commands are not doing what you want.
+If you are not getting this output check the command line very carefully. Even small changes could be interpreted by the shell as entirely different commands so you need to be extra careful and gather insight when commands are not doing what you want.
 
 The *echo* and *cat* commands
 -----------------------------
@@ -287,7 +287,7 @@ they are described in the command line, concatenating the output so the
 name of the command.
 
 You can even use a nice trick to write a small text on a file. Execute
-the following command, followed by the text that you want to write, sat
+the following command, followed by the text that you want to write, at
 the end execute `Ctrl-D` (`^D`), the *Control Key* followed by the `D`
 key. I am annotating below the location where `^D` should be executed:
 
@@ -301,8 +301,8 @@ I am learning UNIX Commands
 
 In fact, there are hundreds of commands, most of them with a variety of
 options that change the behavior of the original command. You can feel
-bewildered t first by a large number of existing commands, but in fact
-most of the time you will be using a very little number of them.
+bewildered at first by a large number of existing commands, but in fact
+most of the time you will be using a very small number of them.
 Learning those will speed up your learning curve.
 
 Another very simple command that is very useful in HPC is `date`.
@@ -339,13 +339,13 @@ $> $ pwd
 
 It is very important at all times to know where in the tree you are.
 Doing research usually involves dealing with an important amount of
-data, exploring several parameters or physical conditions. Organize
-properly all the data in meaningful folders is very important to
+data, exploring several parameters or physical conditions. Organizing all the data
+properly in meaningful folders is very important to
 research endeavors.
 
 When you log into a cluster, by default you are located on your `$HOME`
 folder. That is why most likely the command `pwd` will return that
-location in a first instance.
+location in the first instance.
 
 The next command is `cd`. This command is used to *change directory*.
 The directory is another name for *folder*. The term *directory* is also
