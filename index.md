@@ -14,7 +14,7 @@ Intended to be used as a shared resource by several users, it relies on a resour
 
 > ## Prerequisites
 >
-> This tutorial assumes a very minimal familiarity with command line interface. This first lesson is intended even for first-time users. The lesson progresses towards submit jobs in a cluster and working with files all from a terminal interface.
+> This tutorial assumes a very minimal familiarity with command line interface. This first lesson is intended even for first-time users. The lesson progresses towards submitting jobs in a cluster and working with files all from a terminal interface.
 {: .prereq}
 
 {% include links.md %}
