@@ -384,8 +384,25 @@ $ conda env create -f stats.yml
 ~~~
 {: .language-bash}
 
-<<<<<<< HEAD
-=======
+> ## Conda filling your quota
+>
+> If you have multiple conda environments at some point you will reach the point where conda could reach your quota limit for `$HOME`
+>
+> There are several things you can do:
+>
+> 1. Remove packages at `.conda/pkgs`, those packages are downloaded when you create the environments and they are kept in case you reuse them for new environments. They are safe to remove, and will be downloaded next time you need them.  
+>
+> 2. Move the entire `.conda` folder to your scratch. Keep recipes for the creation of your environments on `$HOME` but the environments themselves can take significant space, bigger than your 10 GB quota on Spruce or Thorny.
+>  You can move `.conda` very easily with this commands
+>
+>~~~
+>$ mv $HOME/.conda $SCRATCH
+>$ ln -s $SCRATCH/.conda $HOME/.conda
+>~~~
+>{: .language-bash}
+>
+{: .callout}
+
 ## Exercise
 
 1. Create a couple of environments one with Python 2.7 and another with Python 3.6.
@@ -394,5 +411,4 @@ $ conda env create -f stats.yml
 
 3. Now try adding the intel channel and install tensorflow and scikit-learn
 
->>>>>>> ca2c22ef0aa9cb09033af1e68766408bf20152aa
 {% include links.md %}
