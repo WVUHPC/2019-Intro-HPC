@@ -5,9 +5,9 @@ exercises: 10
 questions:
 - "How to send files in and out the cluster"
 objectives:
-- "Transfer files using rsync and Globus Online"
+- "Transfer files using Globus Online, sftp, and scp"
 keypoints:
-- "Transfer files using rsync and Globus Online"
+- "Transfer files using Globus Online, sftp, and scp"
 ---
 
 ## Overview
