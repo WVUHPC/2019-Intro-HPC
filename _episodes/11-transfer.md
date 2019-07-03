@@ -57,9 +57,9 @@ WVU’s Globus Subscription adds the following features:
 - Download either the Mac, Linux, or Windows client depending on your system.
 
   -For OS specific setup instructions see the links below: 
-  https://docs.globus.org/how-to/globus-connect-personal-mac/
-  https://docs.globus.org/how-to/globus-connect-personal-windows/
-  https://docs.globus.org/how-to/globus-connect-personal-linux/
+    - https://docs.globus.org/how-to/globus-connect-personal-mac/
+    - https://docs.globus.org/how-to/globus-connect-personal-windows/
+    - https://docs.globus.org/how-to/globus-connect-personal-linux/
 
 - Once you have the personal client setup and connected go back to your web browser and click on "File Manager" in the top left
 
