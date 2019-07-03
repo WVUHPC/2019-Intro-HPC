@@ -192,9 +192,14 @@ Copy (i.e. download) the directory `class` from 149.165.169.156 and display the 
 
 **Note:** Login information will be provided during class.
 
-## Rsync
+## Additional Options not Covered
+
+In addition to the methods mentioned above, several other popular tools are available but not covered.  Feel free to research these in your own time.
+
+-  rsync: Rsync  is  a fast and extraordinarily versatile file copying tool.  It can copy locally, to/from another host over any remote shell, or to/from a remote rsync daemon.  It offers a large number of options that control every aspect of its behavior and permit very flexible specification of the set of files to be copied.  It is famous for its delta-transfer algorithm, which reduces  the amount  of data sent over the network by sending only the differences between the source files and the existing files in the destination.  Rsync is widely used for backups and mirroring and as an improved copy command for everyday use.  Rsync finds files that need to be transferred using a "quick check" algorithm (by default) that looks for files that have changed in size or in last-modified time.  Any changes  in  the  other preserved attributes (as requested by options) are made on the destination file directly when the quick check indicates that the file’s data does not need to be updated.  
 
 ## Google Drive
 
+Google Drive provides WVU students and faculty free unlimited storage through their WVU MIX Account.  Is this is great solution for archiving data sets and is integerated directly with Globus Online!  Note: This does not work well for active data sets due to the slowness of having to retrieve the data.
 
 {% include links.md %}
