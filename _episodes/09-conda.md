@@ -1,20 +1,20 @@
 ---
-title: "Package and Environemnt Management (Conda)"
+title: "Package and Environment Management (Conda)"
 teaching: 60
 exercises: 30
 questions:
-- "How to create my own Environemnt and install packages with Conda"
+- "How to create my own Environment and install packages with Conda"
 objectives:
 - "Learn about the different components in Conda"
 keypoints:
 - "With conda you are able to install a number of packages not available among the centrally managed packages"
 ---
 
-Conda is an open source package management system and environment management system. Conda quickly installs, runs and updates packages and their dependencies. Conda easily creates, saves, loads and switches between environments on your local computer. Conda as a package manager helps you find and install packages. Conda knows the recipes of compilation for a number of packages. Originally created for Python it is able to manage packages, dependencies for any language like Python, R, Ruby, Lua, Scala, Java, JavaScript, C/ C++ and FORTRAN.
+Conda is an open source package management system and environment management system. Conda quickly installs, runs and updates packages and their dependences Conda easily creates, saves, loads and switches between environments on your local computer. Conda as a package manager helps you find and install packages. Conda knows the recipes of compilation for a number of packages. Originally created for Python it is able to manage packages, dependencies for any language like Python, R, Ruby, Lua, Scala, Java, JavaScript, C/ C++ and FORTRAN.
 
 There are two major versions on Conda: **Anaconda** and **Miniconda**. The difference among **Anaconda** and **Miniconda** is that Miniconda only comes the package management system. So when you install it, there is just the management system and not coming with a bundle of pre-installed packages like Anaconda does. Once Conda is installed, you can then install whatever package you need from scratch
 
-So for your Desktop environment Anaconda is probably a better option. For and HPC cluster, inside a container, or for a Continuos Integration (CI) system, Miniconda is a better solution, lighter and easier to customize.
+So for your Desktop environment Anaconda is probably a better option. For and HPC cluster, inside a container, or for a Continuous Integration (CI) system, Miniconda is a better solution, lighter and easier to customize.
 
 ## Packages, Channels and Environments
 
@@ -384,4 +384,15 @@ $ conda env create -f stats.yml
 ~~~
 {: .language-bash}
 
+<<<<<<< HEAD
+=======
+## Exercise
+
+1. Create a couple of environments one with Python 2.7 and another with Python 3.6.
+
+2. To each of them add the following packages: numpy, scipy, ipython, networks and pandas.
+
+3. Now try adding the intel channel and install tensorflow and scikit-learn
+
+>>>>>>> ca2c22ef0aa9cb09033af1e68766408bf20152aa
 {% include links.md %}
