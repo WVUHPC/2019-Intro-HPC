@@ -30,60 +30,54 @@ WVU’s Globus Subscription adds the following features:
 
 ### Globus Online Account Setup
 
-Navigate to https://www.globus.org/
+- Navigate to https://www.globus.org/
 
-Click the "Log In" button in the top right
+- Click the "Log In" button in the top right
 
-You should see a page that looks like this:
+- Choose "West Virginia University" from the dropdown and hit "Continue"
 
-<a href="{{ page.root }}/fig/Globus.png">
-  <img src="{{ page.root }}/fig/Globus.png" alt="Globus" />
-</a>
+- You should then be transfered to a WVU login page. Sign in with your WVU Login credentials.
 
-Choose "West Virginia University" from the dropdown and hit "Continue"
+- After you have successfully signed in there you can hit "Continue" on the next page unless you have already used Globus before and want to link your accounts
 
-You should then be transfered to a WVU login page. Sign in with your WVU Login credentials.
-
-After you have successfully signed in there you can hit "Continue" on the next page unless you have already used Globus before and want to link your accounts
-
-Hit "Continue" agian on the next page to complete your account setup and "allow" Globus permission on the final page
+- Hit "Continue" agian on the next page to complete your account setup and "allow" Globus permission on the final page
 
 ### Globus Online Demo
 
-To transfer files from your personal PC to an HPC system you will first need to setup a personal Globus endpoint.
+- To transfer files from your personal PC to an HPC system you will first need to setup a personal Globus endpoint.
 
-From the Globus File Manager page click on "Endpoints" in the left hand pane
+- From the Globus File Manager page click on "Endpoints" in the left hand pane
 
-Click on "Create new endpoint"
+- Click on "Create new endpoint"
 
-Choose "Globus Connect Personal"
+- Choose "Globus Connect Personal"
 
-Enter an endpoint display name. This can be whatever you choose.
+- Enter an endpoint display name. This can be whatever you choose.
 
-Download either the Mac, Linux, or Windows client depending on your system.
+- Download either the Mac, Linux, or Windows client depending on your system.
 
-For OS specific setup instructions see the links below: 
-https://docs.globus.org/how-to/globus-connect-personal-mac/
-https://docs.globus.org/how-to/globus-connect-personal-windows/
-https://docs.globus.org/how-to/globus-connect-personal-linux/
+  -For OS specific setup instructions see the links below: 
+  https://docs.globus.org/how-to/globus-connect-personal-mac/
+  https://docs.globus.org/how-to/globus-connect-personal-windows/
+  https://docs.globus.org/how-to/globus-connect-personal-linux/
 
-Once you have the personal client setup and connected go back to your web browser and click on "File Manager" in the top left
+- Once you have the personal client setup and connected go back to your web browser and click on "File Manager" in the top left
 
-At the top of the page click in the "Collection" box
+- At the top of the page click in the "Collection" box
 
-Navigate to the "Your Collections" tab and select the endpoint you created
+- Navigate to the "Your Collections" tab and select the endpoint you created
 
-Click on an item you would like to transfer and then click the "Transfer or Sync to..." on the right hand side
+- Click on an item you would like to transfer and then click the "Transfer or Sync to..." on the right hand side
 
-In the section that just came up click in the top box and type "wvu#". You will see a few different options here provided by WVU. wvu#hpcdtn is for Spruce. wvu#thornydtn is for Thorny Flat. Choose wvu#hpcdtn for now.
+- In the section that just came up click in the top box and type "wvu#". You will see a few different options here provided by WVU. wvu#hpcdtn is for Spruce. wvu#thornydtn is for Thorny Flat. Choose wvu#hpcdtn for now.
 
-Now you should see three folders: group, home, and scratch
+- Now you should see three folders: group, home, and scratch
 
-Double click the "home" folder and you should see just your user folder there. Double click that folder. From here you can Start the file transfer or you can choose a more specific location to put the file in. 
+- Double click the "home" folder and you should see just your user folder there. Double click that folder. From here you can Start the file transfer or you can choose a more specific location to put the file in. 
 
-Once you are ready hit "Start" at the bottom left hand side. Once it starts you should get a Task id that you can click on and view the progress of the transfer
+- Once you are ready hit "Start" at the bottom left hand side. Once it starts you should get a Task id that you can click on and view the progress of the transfer
 
-You should also get a notification email once it succeeds or fails.
+- You should also get a notification email once it succeeds or fails.
 
 ## Transferring files interactively with sftp
 
