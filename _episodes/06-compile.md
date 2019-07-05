@@ -12,6 +12,67 @@ keypoints:
 
 Compiling code is one of the tasks that HPC users have to do as part of their research. This small tutorial shows how to compile relatively simple pieces of code in C and Fortran
 
+## OpenMP
+
+OpenMP is an Application Program Interface (API) that may be used to explicitly direct multi-threaded, shared memory parallelism.
+
+This is one example of how OpenMP looks in a C code (example_omp.c):
+
+~~~
+#include <stdio.h>
+#include <omp.h>
+
+int main(int argc, char *argv[]) {
+
+        int nthreads, tid;
+
+        /* Fork a team of threads with each thread having a private tid variable */
+        #pragma omp parallel private(tid)
+        {
+
+        /* Obtain and print thread id */
+        tid = omp_get_thread_num();
+        printf("Hello World from thread = %d\n", tid);
+
+        /* Only master thread does this */
+        if (tid == 0)
+        {
+                nthreads = omp_get_num_threads();
+                printf("Number of threads = %d\n", nthreads);
+        }
+
+        }  /* All threads join master thread and terminate */
+
+        return 0;
+}
+~~~
+{: .source}
+
+Compiling code that uses OpenMP needs an extra argument to the command line.
+In the case of GCC the compilation is like this:
+
+~~~
+$ gcc -fopenmp example_omp.c
+~~~
+{: .language-bash}
+
+In the case of Intel compilers the compilation like looks like this:
+
+~~~
+$ icc -qopenmp example_omp.c
+~~~
+{: .language-bash}
+
+When you execute programs with OpenMP pay attention to control the number of threads that the code is using. Just executing the code will by default create as many threads as cores are enabled on the system something that in some cases could end up in lower performance.
+
+To control the number of threads for example to just use 4 regardless of the number of cores use:
+
+~~~
+$ OMP_NUM_THREADS=4 ./a.out
+~~~
+{: .language-bash}
+
+
 ## MPI
 
 MPI is a library for distrubuted parallel computing. Today is the library of choice for solving large numerical problems on HPC clusters.
@@ -72,6 +133,110 @@ $ mpirun -np 4 example_mpi
 {: .language-bash}
 
 In this case you are running using 4 cores.
+
+
+When compiling code with MPI be aware that two elements are involved, the compiler and the MPI implementation. And the combination is important when you execute the code. Always use the mpirun from the same implementation used to compile the code.
+
+In the case of OpenMPI the wrappers are called `mpicc`, `mpicxx` and `mpif90`.
+
+In the case of Intel there are two sets of wrappers
+
+| Command | Language | Compiler Used |
+|:--------|:---------|:--------------|
+| mpicc   | C        | (gcc) GCC     |
+| mpicxx  | C++        | (g++) GCC     |
+| mpif90  | Fortran 90/95/2003/2013        | (gfortran) GCC     |
+| mpiicc   | C        | (icc) Intel     |
+| mpiicpc  | C++        | (icpc) Intel     |
+| mpiifort  | Fortran 90/95/2003/2013        | (ifort) Intel     |
+
+## BLAS and Lapack
+
+Consider the following code that uses Lapack function dgesv.
+DGESV computes the solution to a real system of linear equations
+    A * X = B,
+ where A is an N-by-N matrix and X and B are N-by-NRHS matrices.
+
+~~~
+program randomsys2
+    implicit none
+    real(kind=8), dimension(:),allocatable :: x,b
+    real(kind=8), dimension(:,:),allocatable :: a
+    real(kind=8) :: err
+    integer :: i, info, lda, ldb, nrhs, n
+    integer, dimension(:), allocatable :: ipiv
+
+    ! initialize random number generator seed
+    ! if you remove this, the same numbers will be generated each
+    ! time you run this code.
+    call init_random_seed()  
+
+    print *, "Input n ... "
+    read *, n
+
+    allocate(a(n,n))
+    allocate(b(n))
+    allocate(x(n))
+    allocate(ipiv(n))
+
+    call random_number(a)
+    call random_number(x)
+    b = matmul(a,x) ! compute RHS
+
+    nrhs = 1 ! number of right hand sides in b
+    lda = n  ! leading dimension of a
+    ldb = n  ! leading dimension of b
+
+    call dgesv(n, nrhs, a, lda, ipiv, b, ldb, info)
+
+    ! Note: the solution is returned in b
+    ! and a has been changed.
+
+    ! compare computed solution to original x:
+    print *, "         x          computed       rel. error"
+    do i=1,n
+        err = abs(x(i)-b(i))/abs(x(i))
+        print '(3d16.6)', x(i),b(i),err
+        enddo
+
+    deallocate(a,b,ipiv)
+
+end program randomsys2
+~~~
+{: .source }
+
+The code uses and auxiliary subroutine `init_random_seed` to generate a different set of pseudo random numbers on each run.
+
+Depending on the fortran compiler you want to use (gfortran or ifort) you execute:
+
+~~~
+gfortran -c init_random_seed.f90
+~~~
+{: .source }
+
+or
+
+~~~
+ifort -c init_random_seed.f90
+~~~
+{: .source }
+
+To compile a code that uses BLAS/Lapack it is always better to use an optimized version of those libraries, instead of using the reference BLAS and LAPACK from netlib.
+
+This is how you can compile the code:
+
+~~~
+gfortran example_dgesv.f90 init_random_seed.o -lopenblas
+~~~
+{: .source }
+
+~~~
+ifort example_dgesv.f90 init_random_seed.o -L${MKLROOT}/lib/intel64 -Wl,--no-as-needed -lmkl_intel_lp64 -lmkl_sequential -lmkl_core -lpthread -lm -ldl
+~~~
+{: .source }
+
+The compilation using the MKL can be complex, so it is better to refer to the MKL link advisor <https://software.intel.com/en-us/articles/intel-mkl-link-line-advisor>
+
 
 ## HDF5
 
@@ -272,7 +437,7 @@ That will generate 2 figures that you can transfer to your computer to see.
 
 >## Exercise: Compiling codes.
 >
-> On the repository for `2019-Data-HandsOn` there is a folder with the examples presented on this episode `1.Intro-HPC/compile`.
+> On the repository for `2019-Data-HandsOn` there is a folder with the examples presented on this episode `1.Intro-HPC/06.compile`.
 >
 > There you will find a couple of source codes: `example_gsl.c` and `matmult.c` that have not being compiled yet.
 >

@@ -131,7 +131,7 @@ qsub runjob.pbs
 >~~~
 >{: .language-bash}
 >
->The folder is `1.Intro-HPC/singularity`. If you are not familiar with R programming, the script is there too. Notice that you cannot write your script to download the CSV file directly from the Census Bureau as the compute  nodes have no Internet access.
+>The folder is `1.Intro-HPC/08.singularity`. If you are not familiar with R programming, the script is there too. Notice that you cannot write your script to download the CSV file directly from the Census Bureau as the compute  nodes have no Internet access.
 > Write a submission script and submit.
 >
 {: .challenge}

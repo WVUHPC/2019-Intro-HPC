@@ -126,7 +126,7 @@ offers you a name. Simply press ENTER and your file is saved.
 
 Emacs is an extensible, customizable, open-source text editor. Together
 with Vi/Vim is one the most widely used editors in Linux environments.
-There are a big number of commands, customizations and extra modules
+There are a big number of commands, customization and extra modules
 that can be integrated with Emacs. We will just go briefly covering the
 basics.
 
@@ -165,7 +165,7 @@ Vim is an improved version of the original vi, it offers
 Here is a summary of the main commands used on vi. On Spruce when using
 \"vi\" you are actually using \"vim\".
 
-This is very beautifull Refernce Card for vim
+This is very beautiful Reference Card for vim
 
 <a href="https://external-preview.redd.it/iigrixvxp5aYN9ox7Gr1dfI_rhLRotWlLsCafjJqjEQ.png?auto=webp&s=1594ddc17408cb9186a73c2a6d1a1bf1e00769dd">
   <img src="https://external-preview.redd.it/iigrixvxp5aYN9ox7Gr1dfI_rhLRotWlLsCafjJqjEQ.png?auto=webp&s=1594ddc17408cb9186a73c2a6d1a1bf1e00769dd" alt="Vim Ref Card" />

@@ -249,7 +249,7 @@ the master modulefile directory.
 >    ~~~
 >    {: .source}
 >
-> 6. Go back and purge all the modules from your environment. We will now explore why is important to use a recent compiler. Try to compile the code at `1.IntroHPC/modules/lambda_c++14.cpp`. Go to the folder and execute:
+> 6. Go back and purge all the modules from your environment. We will now explore why is important to use a recent compiler. Try to compile the code at `1.Intro-HPC/05.modules/lambda_c++14.cpp`. Go to the folder and execute:
 >
 >    ~~~
 >    g++ lambda_c++14.cpp

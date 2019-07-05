@@ -106,7 +106,7 @@ The directives are very similar to the serial case
 
 > ## Exercise: Creating a Job script and submit it
 >
-> On `1.IntroHPC/6.Torque_Moab` you will find the same 3 ABINIT files that we work on the Command Line Interface episode. The exercise is to prepare a submission script for computing the calculation. This is all that you need to know:
+> On `1.Intro-HPC/07.jobs` you will find the same 3 ABINIT files that we work on the Command Line Interface episode. The exercise is to prepare a submission script for computing the calculation. This is all that you need to know:
 >
 > 1. You need to load the these modules to use ABINIT
 >    ~~~

@@ -30,7 +30,7 @@ You can see specs for our clusters at <https://docs.hpc.wvu.edu/text/82.Spruce.h
 
 Try to gather an idea on the Hardware present on your machine and see the hardware we have on Spruce Knob or Thorny Flat
 
-Here are some tricks to get that data from several Operative Systems
+Here are some tricks to get that data from several Operating Systems
 
 ### Windows 10
 

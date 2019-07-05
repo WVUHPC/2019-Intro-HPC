@@ -160,7 +160,7 @@ $ git clone git@github.com:WVUHPC/2019-Data-HandsOn.git
 ~~~
 {: .language-bash}
 
-Go to the folder `1.Intro-HPC/git` there is a tree structure that mimics the structure suggested above. Copy the files into your own repository, in particular copy the `paper.tex` and `Makefile` into folder `paper` and `Data Generator.py` into scripts. There is also a file `Data Generator.ipynb` that is a IPython Notebook or Jupyter notebook.
+Go to the folder `1.Intro-HPC/10.git` there is a tree structure that mimics the structure suggested above. Copy the files into your own repository, in particular copy the `paper.tex` and `Makefile` into folder `paper` and `Data Generator.py` into scripts. There is also a file `Data Generator.ipynb` that is a IPython Notebook or Jupyter notebook.
 Running the python script should produce both the data `wave.dat` and the figure `wave.pdf` in their respective folders. However, for the purpose of this lesson, the files are pre-generated so you can copy them and skip running the script.
 
 ~~~

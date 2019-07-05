@@ -180,7 +180,7 @@ Execute this command and see the answer
 
 If you are not getting this output check the command line very carefully. Even small changes could be interpreted by the shell as entirely different commands so you need to be extra careful and gather insight when commands are not doing what you want.
 
-The *echo* and *cat* commands
+The `echo` and `cat` commands
 -----------------------------
 
 Your fist command will show you what those locations are. Execute:

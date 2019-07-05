@@ -10,11 +10,370 @@ keypoints:
 - "Basic shell programming for HPC"
 ---
 
+## Why learn shell programming
+
+A working knowledge of shell scripting is essential to anyone at Linux system administration, specially the old-school of sysadmins who actually dig into the internal machinery of startup and configuration scripts. However, HPC users also see benefits of having a minimal understanding of Shell Scripting.
+
+A Torque submission script has two roles in a single file. From one side all the lines starting with `#PBS` are interpreted by Torque/Moab but the rest of the file is a shell script. In most cases just a sequence of commands loading modules and and command lines, but with some basic knowledge those scripts can perform far more elaborated executions.
+
+A shell script is a quick way of prototyping a complex execution. Even if you are knowledgeable in Python, another programming language suitable for scripts. There are situations where Shell Scripting is simpler.
+
+## Which Shell
+
+We will be using Bash, an acronym for "Bourne-Again shell" and a pun on Stephen Bourne's now classic Bourne shell. Bash has become a de facto standard for shell scripting on most flavors of Linux/UNIX. Most of the principles this book covers apply equally well to scripting with other shells, such as the Korn Shell, from which Bash derives some of its features, and the C Shell and its variants. There are some instructions that are specific for Bash and will not work on the POSIX-standard so you decide if you want all the niceties of Bash or stick to a most standard syntax for POSIX-compliant shell.
+
+If you are curious about syntax on bash that extends the POSIX standard see <https://www.gnu.org/software/bash/manual/html_node/Major-Differences-From-The-Bourne-Shell.html>
 
 
+ ## Starting with the Sha-bang
+
+There two components that make a script usable as such, the first line with a shabang and the execution mode enabled to the script file.
+
+Lets consider this example of a minimal script that will tell you your username, the hostname and the date (`example1`):
+
+~~~
+echo Hello your username is $USER
+echo You are running on `hostname`
+echo The current date is `date`
+~~~
+{: .source}
+
+This set of commands is actually a script, however it has two main problems.
+First, there is no indication on which scripting language was written. The shell does not know in advance if that was intended to be executed by `sh`, the default shell on the system, that could be or not `bash`. For example on Debian-like systems (Like Ubuntu and Linux Mint) sh is actually `dash` which is different from `bash`. The second problem is that the file is not executable. If you want to execute this you have to execute it like this:
+
+~~~
+sh example1
+~~~
+{: .source}
+
+We can remediate this two problems by adding one line at the very beginning of the script to indicate which scripting languages the file was written and changing the execution permissions to the file. The file will be like (example2.sh)
+
+~~~
+#!/bin/sh
+
+echo Hello your username is $USER
+echo You are running on `hostname`
+echo The current date is `date`
+~~~
+{: .language-bash}
+
+And the permissions changed to add executable mode to it
+
+~~~
+chmod +x example2.sh
+~~~
+{: .source}
+
+The sha-bang (`#!`) at the head of a script tells your system that this file is a set of commands to be fed to the command interpreter indicated. The `#!` is actually a two-byte magic number, a special marker that designates a file type, or in this case an executable shell script.  This is the path to the program that interprets the commands in the script, whether it be a shell, a programming language, or a utility. This command interpreter then executes the commands in the script, starting at the top. For example these are a few other shabangs for some other interpreters:
+
+~~~
+#!/bin/sh
+#!/bin/bash
+#!/usr/bin/perl
+#!/usr/bin/tcl
+#!/bin/sed -f
+#!/bin/awk -f
+#!/usr/bin/env python
+#!/usr/bin/env python3
+~~~
+{: .source}
+
+## A few Special Characters
+
+There are a few characters with special meaning in bash, we will mention here just some of the most usual:
+
+### Comments with `#`
+
+Everything after `#` is ignored by bash
+
+### Command separator `;`
+
+Permits putting two or more commands on the same line.
+On the command line, you can also use `;` for that effect.
+
+### Escape `\`
+
+Some characters receive new meaning when preceeded by the backslash character.
+This is a list of some of them
+
+| Command | Description  |
+|---------|--------------|
+| \n      | newline      |
+| \r      | return       |
+| \v      | vertical tab |
+| \b      | backspace    |
+| \0xx    | translate to octal ASCII |
+
+Example (example4.sh)
+
+~~~
+#!/bin/bash
+
+# Escaping a newline.
+# ------------------
+
+echo ""
+
+echo "This will print
+as two lines."
+# This will print
+# as two lines.
+
+echo ""
+
+echo "This will print \
+as one line."
+# This will print as one line.
+
+echo ""
+
+echo -e "This\twill\tprint\twith\ttabs"
+# This will print with tabs.
+
+echo; echo
+
+echo "============="
 
 
-Download the data for the lesson. On folder `2018-Data-HandsOn/3.Data/1.Text` you will find a file called `output.log`. That is an actual output file from a Molecular Dynamics code.
+echo "\v\v\v\v"      # Prints \v\v\v\v literally.
+# Use the -e option with 'echo' to print escaped characters.
+echo "============="
+echo "VERTICAL TABS"
+echo -e "\v\v\v\v"   # Prints 4 vertical tabs.
+echo "=============="
+
+echo "QUOTATION MARK"
+echo -e "\042"       # Prints " (quote, octal ASCII character 42).
+echo "=============="
+
+echo; echo "NEWLINE"
+echo This is going to jump $'\n' to a new line           # Newline.
+
+exit 0
+~~~
+{: .language-bash}
+
+### Partial quoting `"` and full quoting `'`
+
+Both are ways preserve a string from interpretation. The full quoting being a stronger form of quoting.  An argument enclosed in double quotes presents itself as a single word, even if it contains whitespace separators.
+Single quotes `'` operate similarly to double quotes, but do not permit referencing variables, since the special meaning of $ is turned off.
+Consider this example (example3.sh)
+
+~~~
+#!/bin/bash
+
+echo "This variable is interpreted $USER"
+echo 'This variable is not interpreted $USER'
+~~~
+{: .language-bash}
+
+### Wild cards `*` and `?`
+
+Those two characters are interpreted in filename expansions. The character `*` replace one or more characters in names and `?` only a single character.
+
+### Variable substitution
+
+A `$` prefixing a variable name indicates the value the variable holds.
+Sometimes is better to add `{}` to remove ambiguity or when concatenating variables.
+
+### Integer expansion
+
+Expand and evaluate integer expression between (( )).
+
+Example:
+
+~~~
+$ a=3; b=5; c=$(( a + b)); echo $c
+~~~
+{: .language-bash}
+
+### Redirection `> &> >& >> <`
+
+`command >filename` redirects the output of `command` to file `filename`. Overwrite filename if it already exists.
+
+`command &>filename` redirects both the `stdout` and the `stderr` of command to filename.
+
+`command >&2` redirects stdout of command to stderr.
+
+`command >>filename` appends the output of `command` to file `filename`. If filename does not already exist, it is created.
+
+`command <filename` takes the entry from filename as stdin for `command` instead of reading from keyboard
+
+### Logical Operators `&& and ||`
+
+Those operators are used to chain operations.
+In the case of `&&` where the second is not used if the first one returns 0.
+In the case of `||` the second one is executed if the first one returns a value different from 0.
+
+This is just a brief recollection of the most common special characters that will help us write simple bash scripts. With these and a few conditionals and loops we are ready to write useful scripts.
+
+## Tests and Conditionals
+
+Executing commands based on the result of a test is fundamental to most programming languages. In bash the structure looks like:
+
+~~~
+if test-expression
+then
+   statement
+fi
+~~~
+{: .language-bash}
+
+Or adding a clause includes statements when the test fail:
+
+~~~
+if expression
+then
+   statement
+else
+   statement
+fi
+~~~
+{: .language-bash}
+
+A one simple example shows its usage:
+
+~~~
+#!/bin/bash
+
+T1=$1
+T2=$2
+
+if [ $T1 -lt $T2 ]
+then
+    echo The first number $T1 is less than to the second one $T2
+else
+    echo The second number $T2 is less than or equal to the first one $T1
+fi
+~~~
+{: .language-bash}
+
+Conditionals can be written in one line like:
+
+~~~
+a=6; b=30; if [ $a -lt $b ]; then echo $a; else echo $b; fi
+~~~
+{: .language-bash}
+
+This is particularly useful when executing conditionals directly on the terminal.
+
+## Loops
+
+In bash there are 3 ways of creating loops in bash. `for`, `while` and `until`.
+
+A few examples shows how those loops
+
+~~~
+#!/bin/bash
+# Listing the planets.
+
+for planet in Mercury Venus Earth Mars Jupiter Saturn Uranus Neptune Pluto
+do
+  echo $planet  # Each planet on a separate line.
+done
+
+echo; echo
+
+for planet in "Mercury Venus Earth Mars Jupiter Saturn Uranus Neptune Pluto"
+    # All planets on same line.
+    # Entire 'list' enclosed in quotes creates a single variable.
+    # Why? Whitespace incorporated into the variable.
+do
+  echo $planet
+done
+
+echo; echo "Whoops! Pluto is no longer a planet!"
+
+exit 0
+~~~
+{: .language-bash}
+
+This behavior is very similar to the way **for loops** work on Python where loops iterate or a list or more generally over an iterable variable and it is different on how the same loops work on languages like C or C++. Looping from  an initial value and increasing or decreasing its value can be achieved with the other two forms, `while` and `until`.
+
+~~~
+#!/bin/bash
+COUNTER=0
+while [  $COUNTER -lt 10 ]; do
+    echo The counter is $COUNTER
+    let COUNTER=COUNTER+1
+done
+~~~
+{: .language-bash}
+
+## Exercise
+
+We have now enough elements to start adding a bit more complex scripting to submission scripts. Consider this code (mpi_pi.c)
+
+~~~
+#include <stdio.h>
+#include <stdlib.h>
+#include "mpi.h"
+#include <math.h>
+
+int main(argc,argv)
+int argc;
+char *argv[];
+{
+    int done = 0, n, myid, numprocs, i;
+    double PI25DT = 3.141592653589793238462643;
+    double mypi, pi, h, sum, x;
+
+    MPI_Init(&argc,&argv);
+    MPI_Comm_size(MPI_COMM_WORLD,&numprocs);
+    MPI_Comm_rank(MPI_COMM_WORLD,&myid);
+
+    n = atoi(argv[1]);
+    if (n == 0) return 1;
+
+    MPI_Bcast(&n, 1, MPI_INT, 0, MPI_COMM_WORLD);
+
+    h   = 1.0 / (double) n;
+    sum = 0.0;
+    for (i = myid + 1; i <= n; i += numprocs) {
+        x = h * ((double)i - 0.5);
+        sum += 4.0 / (1.0 + x*x);
+    }
+    mypi = h * sum;
+
+    MPI_Reduce(&mypi, &pi, 1, MPI_DOUBLE, MPI_SUM, 0,
+           MPI_COMM_WORLD);
+
+    if (myid == 0)
+        printf("pi is approximately %.16f, Error is %.16f\n",
+           pi, fabs(pi - PI25DT));
+
+    MPI_Finalize();
+    return 0;
+}
+~~~
+{: .source}
+
+This code is written in C, uses MPI to get an approximation to PI.
+Assuming that you do not know C if you are ask about how the PI converges with the number of elements in the series, the best that you can do is to execute the code over and over with more and more elements.
+
+The challenge is to create a submission script that can compute PI considering from 1 up to 100 terms in the series and store the results in a file.
+
+Write a submission script that effectively achieve that.
+
+In case you have forgotten how to compile this code, here is the command:
+
+~~~
+$ mpicc mpi_pi.c -o mpi_pi
+~~~
+{: .source}
+
+And each execution should be like this:
+
+~~~
+mpirun -np 4 ./mpi_pi 100
+~~~
+{: .source}
+
+# Extracting data with `grep` and `awk`
+
+Once you start creating scripts, the next step is learn how to deal with growing amount of information. There are two commands that are commonly used to extract information from large texts, `grep` and `awk`
+
+Download the data for the lesson. On folder `2019-Data-HandsOn/1.Intro-HPC/13.shell` you will find a file called `output.log`. That is an actual output file from a Molecular Dynamics code.
 
 Lets start for getting an idea about the size number of lines of that file:
 
