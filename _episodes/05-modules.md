@@ -17,7 +17,7 @@ keypoints:
 The shell, and many other command line programs uses a set of variables to control their behavior. Those variables are called **Environment Variables**.
 Think about them as placeholders for information stored within the system that passes data to programs launched in the shell.
 
-Environment Variables control a big deal of CLI functionality. The declare where to search for executable commands. Where to search for libraries. On which language display messages to you. How you prompt looks. Beyond the shell itself. Environment variables are use by many codes to control their own operation.
+Environment Variables control a big deal of CLI functionality. They declare where to search for executable commands, where to search for libraries, which language display messages to you, how you prompt looks. Beyond the shell itself, Environment Variables are use by many codes to control their own operation.
 
 You can see all the variables currently defined by executing:
 
@@ -74,13 +74,13 @@ Some common environment variables are:
 |:----------------------|:------------|
 | $USER	  | Your username  |
 | $HOME   | The path to your home directory |
-| $PS1	  | You prompt |
+| $PS1	  | Your prompt |
 | $PATH	  | List of locations to search for executable commands |
 | $MANPATH	  | List of locations to search for manual pages |
 | $LD_LIBRARY_PATH	  | List of locations to search for libraries in runtime |
 | $LIBRARY_PATH	  | List of locations to search for libraries during compilation (actually during linking) |
 
-Those are just a few environment variables of common use. There are many more. Changing them will change where executables are found, which libraries are used and how the system behaves in general. That is why managing properly the environment variables is so important on a machine, and even more on a HPC cluster, a machine that runs many different codes with different versions.
+Those are just a few environment variables of common use. There are many more. Changing them will change where executables are found, which libraries are used and how the system behaves in general. That is why managing the environment variables properly is so important on a machine, and even more on a HPC cluster, a machine that runs many different codes with different versions.
 
 Here is where environment modules enters.
 
@@ -242,14 +242,14 @@ the master modulefile directory.
 >
 > 4. Check again which version of those 3 components you have now. Notice that in the case of Python 3, the command python still goes towards the old python 2.6.6, as the python 3.x interpreter is not backwards compatible with python 2.x the new command is called `python3`, check its version by entering the command.
 >
-> 5. Clean all the environment
+> 5. Clean all of the environment
 >
 >    ~~~
 >    module purge
 >    ~~~
 >    {: .source}
 >
-> 6. Go back and purge all the modules from your environment. We will now explore why is important to use a recent compiler. Try to compile the code at `1.Intro-HPC/05.modules/lambda_c++14.cpp`. Go to the folder and execute:
+> 6. Go back and purge all the modules from your environment. We will now explore why it is important to use a recent compiler. Try to compile the code at `1.Intro-HPC/05.modules/lambda_c++14.cpp`. Go to the folder and execute:
 >
 >    ~~~
 >    g++ lambda_c++14.cpp
@@ -265,7 +265,7 @@ the master modulefile directory.
 >    {: .source}
 >
 >
->    Now from that list, start loading and trying to compile the code as indicated above. Which versions of GCC allow you to compile the code? Try also the Intel compilers. In the case of intel the command to compile the code is
+>    Now from that list, start loading and trying to compile the code as indicated above. Which versions of GCC allow you to compile the code? Also try the Intel compilers. In the case of intel the command to compile the code is
 >
 >    ~~~
 >    icpc lambda_c++14.cpp
