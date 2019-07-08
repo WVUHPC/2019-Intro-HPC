@@ -106,7 +106,7 @@ The directives are very similar to the serial case
 
 > ## Exercise: Creating a Job script and submit it
 >
-> On `1.Intro-HPC/07.jobs` you will find the same 3 ABINIT files that we work on the Command Line Interface episode. The exercise is to prepare a submission script for computing the calculation. This is all that you need to know:
+> On `1.Intro-HPC/07.jobs` you will find the same 3 ABINIT files that we worked on the Command Line Interface episode. The exercise is to prepare a submission script for computing the calculation. This is all that you need to know:
 >
 > 1. You need to load the these modules to use ABINIT
 >    ~~~
@@ -175,7 +175,7 @@ There a few new elements here: `${PBS_ARRAYID}`  is a variable that receives one
 > {: .solution}
 >
 > Modify the submission script from the previous exercise to create a job array.
-> When execute, each job in the array receives a different value inside `${PBS_ARRAYID}`, we use the value to go into the corresponding folder and execute ABINIT there.
+> When executed, each job in the array receives a different value inside `${PBS_ARRAYID}`, we use the value to go into the corresponding folder and execute ABINIT there.
 >
 >> ## solution
 >>
@@ -385,7 +385,7 @@ $ xeyes
 ~~~
 {: .bash}
 
-Lets suppose that the plot will be created with R, load the module for R 3.4.1 (the latest version by the time of this was written)
+Lets suppose that the plot will be created with R, load the module for R 3.4.1 (the latest version by the time this was written)
 
 ~~~
 $ module load compilers/R/3.4.1
