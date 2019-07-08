@@ -75,7 +75,7 @@ $ OMP_NUM_THREADS=4 ./a.out
 
 ## MPI
 
-MPI is a library for distrubuted parallel computing. Today is the library of choice for solving large numerical problems on HPC clusters.
+MPI is a library for distrubuted parallel computing. Today it is the library of choice for solving large numerical problems on HPC clusters.
 
 This is a very minimal example of a code written using MPI
 
@@ -205,7 +205,7 @@ end program randomsys2
 ~~~
 {: .source }
 
-The code uses and auxiliary subroutine `init_random_seed` to generate a different set of pseudo random numbers on each run.
+The code uses an auxiliary subroutine `init_random_seed` to generate a different set of pseudo random numbers on each run.
 
 Depending on the fortran compiler you want to use (gfortran or ifort) you execute:
 
@@ -245,7 +245,6 @@ HDF5 is a data model, library, and file format for storing and managing data. It
 Learning how to code using HDF5 is beyond the scope, but we will use some examples to show how you can compile code that uses the library.
 
 Lets start with the basic example that shows how to create a dataset.
-The
 
 ~~~
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -329,7 +328,7 @@ collect2: error: ld returned 1 exit status
 ~~~
 {: .output}
 
-All those error are due to the lacking library for HDF5, for this simple clase, all that you have to do is add `-lhdf5` to include those libraries.
+All those error are due to the lacking library for HDF5, for this simple case, all that you have to do is add `-lhdf5` to include those libraries.
 
 ~~~
 $ gcc HDF5_create.c -o HDF5_create -lhdf5
@@ -409,7 +408,7 @@ int main(int argc, char** argv)
 ~~~
 {: .source}
 
-To compile this code we need the module for FFTW and add the right library to the compilation command
+To compile this code we need the module for FFTW and to add the right library to the compilation command
 
 We load the module with:
 
