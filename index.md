@@ -24,7 +24,7 @@ Intended to be used as a shared resource by several users, it relies on a resour
 > (MRI) Award #1726534, and West Virginia University.
 >
 ><a href="{{ page.root }}/fig/NSF_4-Color_bitmap_Logo.png">
-  <img src="{{ page.root }}/fig/NSF_4-Color_bitmap_Logo.png" alt="NSF_4-Color_bitmap_Logo" />
+  <img src="{{ page.root }}/fig/NSF_4-Color_bitmap_Logo.png" height="100" width="100"  alt="NSF_4-Color_bitmap_Logo" />
 ></a>
 >
 {: .callout}
