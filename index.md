@@ -11,6 +11,14 @@ Intended to be used as a shared resource by several users, it relies on a resour
 
 {% comment %} This is a comment in Liquid {% endcomment %}
 
+> ## Link to these pages <https://bit.ly/2Lal1bn>
+>
+><a href="{{ page.root }}/fig/QR-code.png">
+>  <img src="{{ page.root }}/fig/QR-code.png" height="300" width="300"  alt="QR-code" />
+></a>
+>
+{: .callout}
+
 > ## Prerequisites
 >
 > This tutorial assumes a very minimal familiarity with command line interface. This first lesson is intended even for first-time users. The lesson progresses towards submitting jobs in a cluster and working with files all from a terminal interface.
