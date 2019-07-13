@@ -709,7 +709,7 @@ BEGIN {
 Lets go back to the output of the simulation. Imagine now that you would like to know the minimum, maximum and average energy per atom. The next script in AWK will do that:
 
 ~~~
-#/usr/bin/awk -f
+#!/usr/bin/awk -f
 BEGIN {
     emin=10000;
     emax=-10000;

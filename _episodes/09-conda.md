@@ -407,7 +407,7 @@ $ conda env create -f stats.yml
 
 1. Create a couple of environments one with Python 2.7 and another with Python 3.6.
 
-2. To each of them add the following packages: numpy, scipy, ipython, networks and pandas.
+2. To each of them add the following packages: numpy, scipy, ipython, networkxs and pandas.
 
 3. Now try adding the intel channel and install tensorflow and scikit-learn
 
